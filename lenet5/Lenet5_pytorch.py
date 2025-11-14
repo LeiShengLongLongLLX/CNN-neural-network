@@ -1,4 +1,5 @@
-# 保存为 lenet5_pytorch.py 并运行
+# lenet5_pytorch
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

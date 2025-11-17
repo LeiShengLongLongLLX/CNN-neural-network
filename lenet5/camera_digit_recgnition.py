@@ -4,9 +4,9 @@ from torchvision import transforms
 from PIL import Image, ImageOps
 from lenet5_model import LeNet5  # 确保你的模型定义文件在同目录下
 
-def load_model(model_path='lenet5_mnist.pth'):
+def load_model(model_path='G:\Project\CNN_accerator_basedonRISC-V\ModelWeigh\lenet5_mnist.pth'):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"当前设备：{device}")
+    print(f"Device: {device}")
 
     model = LeNet5()
     model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -68,7 +68,7 @@ def main():
         cv2.imshow('Camera show', frame)
 
         # 在终端实时输出预测
-        print(f'预测结果：数字 {pred}', end='\r')
+        print(f'Predict Number: {pred}', end='\r')
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

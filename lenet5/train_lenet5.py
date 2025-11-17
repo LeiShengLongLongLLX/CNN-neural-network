@@ -4,9 +4,28 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import time
-from lenet5_model import LeNet5  # 导入模型结构
+from lenet5_model_maxpool import LeNet5  # 导入lenet5(maxpool版本)
+import platform
 
-def get_dataloaders(batch_size=128, root='./data'):
+# 打印设备信息
+def print_device_info(device):
+    print("===== Device Info =====")
+
+    if device.type == "cuda":
+        gpu_name = torch.cuda.get_device_name(0)
+        print(f"Device: CUDA")
+        print(f"GPU: {gpu_name}")
+        print(f"CUDA Capability: {torch.cuda.get_device_capability(0)}")
+        print(f"Total GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+    else:
+        print("Device: CPU")
+
+    print(f"Python Platform: {platform.platform()}")
+    print("========================\n")
+
+
+# 加载数据集
+def get_dataloaders(batch_size=128, root='G:\Project\CNN_accerator_basedonRISC-V\data'):
     transform = transforms.Compose([
         transforms.Pad(2),  # 28->32
         transforms.ToTensor(),
@@ -18,6 +37,7 @@ def get_dataloaders(batch_size=128, root='./data'):
     test_loader  = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     return train_loader, test_loader
 
+# 训练模型
 def train_one_epoch(model, device, dataloader, optimizer, criterion):
     model.train()
     running_loss, correct, total = 0.0, 0, 0
@@ -35,6 +55,7 @@ def train_one_epoch(model, device, dataloader, optimizer, criterion):
         total += imgs.size(0)
     return running_loss / total, correct / total
 
+# 测试模型
 def evaluate(model, device, dataloader, criterion):
     model.eval()
     running_loss, correct, total = 0.0, 0, 0
@@ -49,10 +70,14 @@ def evaluate(model, device, dataloader, criterion):
             total += imgs.size(0)
     return running_loss / total, correct / total
 
-def main():
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"使用设备: {device}")
 
+def main():
+    
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # 打印设备信息
+    print_device_info(device)
+
+    # 训练轮数
     epochs = 5
     lr = 0.01
     batch_size = 128
@@ -67,10 +92,10 @@ def main():
         train_loss, train_acc = train_one_epoch(model, device, train_loader, optimizer, criterion)
         test_loss, test_acc = evaluate(model, device, test_loader, criterion)
         end = time.time()
-        print(f"Epoch {epoch:02d} | 用时: {end-start:.1f}s | 训练: loss={train_loss:.4f}, acc={train_acc*100:.2f}% | 测试: loss={test_loss:.4f}, acc={test_acc*100:.2f}%")
+        print(f"Epoch {epoch:02d} | Time: {end-start:.1f}s | Train: loss={train_loss:.4f}, acc={train_acc*100:.2f}% | Test: loss={test_loss:.4f}, acc={test_acc*100:.2f}%")
 
-    torch.save(model.state_dict(), 'lenet5_mnist.pth')
-    print("模型权重已保存到 lenet5_mnist.pth")
+    torch.save(model.state_dict(), 'G:\Project\CNN_accerator_basedonRISC-V\ModelWeigh\lenet5_mnist.pth')
+    print("Model have been saved to lenet5_mnist.pth")
 
 if __name__ == "__main__":
     main()

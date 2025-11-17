@@ -9,11 +9,11 @@ transform = transforms.Compose([
 ])
 
 # 加载SVHN训练集和测试集
-train_dataset = datasets.SVHN(root='./data', split='train', download=True, transform=transform)
-test_dataset = datasets.SVHN(root='./data', split='test', download=True, transform=transform)
+train_dataset = datasets.SVHN(root='G:\Project\CNN_accerator_basedonRISC-V\data\SVHN', split='train', download=True, transform=transform)
+test_dataset = datasets.SVHN(root='G:\Project\CNN_accerator_basedonRISC-V\data\SVHN', split='test', download=True, transform=transform)
 
-print(f"训练集大小: {len(train_dataset)}")
-print(f"测试集大小: {len(test_dataset)}")
+print(f"train dataset size: {len(train_dataset)}")
+print(f"test dataset size: {len(test_dataset)}")
 
 # 随机显示训练集中几张图片和标签
 def imshow(img, label):

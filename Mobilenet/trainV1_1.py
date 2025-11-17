@@ -6,7 +6,7 @@ from torchvision import datasets, transforms
 import time
 import platform
 
-from MobileV1 import MobileNetV1  # 你自己的模型文件
+from MobileV1 import MobileNetV1  # 导入MobileNetV1
 
 
 def print_device_info(device):

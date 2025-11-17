@@ -10,9 +10,9 @@ from PIL import ImageOps
 
 
 # 加载模型权重
-def load_model(model_path='lenet5_mnist.pth'):
+def load_model(model_path='G:\Project\CNN_accerator_basedonRISC-V\ModelWeigh\lenet5_mnist.pth'):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"当前设备：{device}")
+    print(f"Device: {device}")
 
     model = LeNet5()
     model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -54,8 +54,8 @@ def predict_image(model, img_tensor):
     return pred
 
 if __name__ == '__main__':
-    model = load_model('lenet5_mnist.pth')
-    img_path = input("请输入要识别的图片路径：")
+    model = load_model('G:\Project\CNN_accerator_basedonRISC-V\ModelWeigh\lenet5_mnist.pth')
+    img_path = input("Please enter the path of the image to recognize: ")
     img_tensor = preprocess_image(img_path)
     pred = predict_image(model, img_tensor)
-    print(f'预测结果：数字 {pred}')
+    print(f'Predict Result: Number {pred}')

@@ -101,7 +101,10 @@ def main():
     transform = transforms.Compose([
         transforms.Resize((32, 32)),
         transforms.ToTensor(),
-        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))  # SVHN是彩色图像3通道
+        # transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))  # SVHN是彩色图像3通道
+        transforms.Normalize(
+            mean=[0.4377, 0.4438, 0.4728],
+            std=[0.1980, 0.2010, 0.1970])
     ])
 
     # 加载SVHN数据集
@@ -113,7 +116,8 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=256, shuffle=False)
 
-    model = MobileNetV2(num_classes=10).to(device)  # SVHN共有10类数字
+    model = MobileNetV2(num_classes=10).to(device)  # 加载模型，SVHN共有10类数字
+
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     criterion = nn.CrossEntropyLoss()
 

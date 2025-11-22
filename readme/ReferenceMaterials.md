@@ -25,5 +25,12 @@ https://gitee.com/unicornx/riscv-operating-system-mooc
 https://www.bilibili.com/video/BV1Q5411w7z5/?spm_id_from=333.337.search-card.all.click&vd_source=81e627cd2e6adac202192029618d378e
 
 
-## 三、
-
+## 三、参考github开源地址
+https://qcheng.top/archives/riscvai-jia-su-qi-zi-liao-hui-zong
+https://github.com/ztachip/ztachip
+https://github.com/redoop/riscv-ai-accelerator
+https://github.com/Akilax0/e19-4yp-RISC-V-SoC-With-Neuromorphic-Accelerator-for-SNNs
+https://github.com/sumanth-kalluri/cnn_hardware_acclerator_for_fpga/tree/master
+https://github.com/taoyilee/clacc?tab=readme-ov-file#rtl-synthesis
+https://github.com/anupam-io/ES203-COA-CNN?tab=readme-ov-file
+https://github.com/cxdzyq1110/NPU_on_FPGA

@@ -9,6 +9,8 @@
 ### 1.2 AI科普视频
 - https://www.bilibili.com/video/BV1axHPzBE7N?spm_id_from=333.788.videopod.sections&vd_source=81e627cd2e6adac202192029618d378e
 
+### 1.3 李宏毅机器学习
+https://www.bilibili.com/video/BV1TAtwzTE1S/?spm_id_from=333.337.search-card.all.click&vd_source=81e627cd2e6adac202192029618d378e
 
 ## 二、RISC-V Operating System
 

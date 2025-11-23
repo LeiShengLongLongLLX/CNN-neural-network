@@ -513,3 +513,20 @@ main/master（主分支）
 
 ---
 
+### 3.7 git分支命令常见总结表
+| 操作内容          | 命令示例                                              | 说明                |
+| ------------- | ------------------------------------------------- | ----------------- |
+| 查看本地分支        | `git branch`                                      | 列出所有本地分支          |
+| 查看远程分支        | `git branch -r`                                   | 列出远程仓库的分支         |
+| 查看所有分支（本地+远程） | `git branch -a`                                   | 列出本地和远程所有分支       |
+| 查看分支跟踪关系      | `git branch -vv`                                  | 显示分支及关联的远程分支      |
+| 创建新分支         | `git branch branch-name`                          | 新建本地分支            |
+| 创建并切换到新分支     | `git checkout -b branch-name`                     | 新建并切换到该分支         |
+| 切换分支          | `git checkout branch-name`                        | 切换到已有分支           |
+| 设置分支关联远程分支    | `git branch --set-upstream-to=origin/branch-name` | 建立本地分支与远程分支的跟踪关系  |
+| 第一次推送并建立关联    | `git push --set-upstream origin branch-name`      | 推送本地分支到远程并建立关联    |
+| 解除分支关联        | `git branch --unset-upstream`                     | 取消当前分支的远程跟踪       |
+| 后续推送          | `git push`                                        | 推送当前分支，前提是已关联远程分支 |
+| 删除本地分支        | `git branch -d branch-name`                       | 删除本地分支（安全）        |
+| 强制删除本地分支      | `git branch -D branch-name`                       | 强制删除本地分支          |
+| 删除远程分支        | `git push origin --delete branch-name`            | 删除远程仓库分支          |

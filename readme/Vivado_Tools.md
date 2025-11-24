@@ -1,7 +1,5 @@
 # Xilinx（现 AMD）的FPGA开发
 
----
-
 ##  一、Vivado 工具链总概
 
 Vivado 是 Xilinx（AMD）为 FPGA 与 SoC（如 Zynq、Versal 等）设计提供的**完整开发环境**。

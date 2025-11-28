@@ -7,10 +7,10 @@
 Tensor Tensor_init(int N, int C, int H, int W)
 {
     Tensor t;
-    t.N = N;
-    t.C = C;
-    t.H = H;
-    t.W = W;
+    t.N = N;     // 设置张量batch_size
+    t.C = C;     // 设置张量通道数
+    t.H = H;     // 设置张量高度
+    t.W = W;     // 设置张量宽度
 
     int size = N * C * H * W;   // 所需内存空间大小
     t.data = (float*)malloc(sizeof(float) * size);   // 分配内存

@@ -2,6 +2,13 @@
 #define TENSOR_H
 
 // NCHW 索引展开
+// n: batch index
+// c: channel index
+// h: height index
+// w: width index
+// C: total channels
+// H: total height
+// W: total width
 #define IDX4(n, c, h, w, C, H, W) \
     ((((n) * C + (c)) * H + (h)) * W + (w))
 

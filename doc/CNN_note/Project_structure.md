@@ -2,15 +2,47 @@
 
 ## 一、C语言文件介绍
 
-### 1.1 `.h` 文件（头文件）的用途与规则
+### 1.1 `.h` 文件（头文件）
 
 ---
 
-头文件 `.h` 的主要作用：
+#### `.h`文件是什么
 
-#### 1. 共享结构体定义（struct / typedef）
+#### `.h`文件有什么作用
 
-所有需要使用 Tensor 的 `.c` 都必须知道 Tensor 的定义，因此放在 `.h`：
+#### `.h`文件应该怎么写
+
+#### 1. `.h` 文件是什么
+
+`.h` 文件（Header File，头文件）是 C/C++ 程序中用于**声明（Declaration）**各种内容的文件。
+它本质上是一个**文本文件**，通过 `#include` 指令被其他 `.c` 或 `.cpp` 文件引用，让多个源文件共享相同的声明。
+
+> **特点：**
+>
+> * 只包含“声明”，不包含“定义”（除特殊情况）。
+> * 是 C 项目“模块化设计”的基础。
+> * 帮助代码分离，提高可维护性和可复用性。
+> * 通过 include 让多个源文件共用函数、结构体、类型、宏等。
+
+---
+
+#### 2. `.h` 文件有什么作用
+
+##### （1）函数声明（Function Declaration）
+
+让其他 `.c` 文件能调用该函数，而不需要知道函数的具体实现内容。
+
+例如：
+
+```c
+void relu(float* input, float* output, int size);
+```
+
+---
+
+##### （2）数据结构声明（struct、typedef）
+
+让多个模块共享同一个结构体类型。
 
 ```c
 typedef struct {
@@ -19,33 +51,132 @@ typedef struct {
 } Tensor;
 ```
 
-#### 2. 共享宏（宏函数 / 常量）
+---
 
-如 NCHW 展开宏必须在所有源文件中一致：
+##### （3）宏定义（#define）
+
+把通用常量、配置统一放在头文件。
 
 ```c
-#define IDX4(n, c, h, w, C, H, W) ...
+#define KERNEL_SIZE 3
+#define MAX_POOL 2
 ```
 
-#### 3. 声明函数原型（function prototype）
+---
 
-声明但不实现：
+##### （4）类型声明（enum、typedef）
 
 ```c
-Tensor Tensor_init(int N, int C, int H, int W);
-void Conv2D(Tensor input, Tensor kernel, Tensor output);
+typedef unsigned int uint32;
 ```
 
-#### 4. 防止重复包含（include guard）
+---
 
-防止头文件被多次 include：
+##### （5）外部变量声明（extern）
+
+避免多文件重复定义全局变量。
 
 ```c
-#ifndef TENSOR_H
-#define TENSOR_H
-...
+extern int g_debug_flag;
+```
+
+---
+
+##### （6）减少代码重复、实现模块化
+
+把接口和实现分开：
+
+* `.h` —— 声明接口（别人怎样调用你的模块）
+* `.c` —— 实现接口（具体怎么实现）
+
+这样你的代码结构清晰且易维护。
+
+---
+
+#### 3. `.h` 文件应该怎么写
+
+##### （1）加入 include guard 防止重复包含
+
+标准写法：
+
+```c
+#ifndef RELU_H
+#define RELU_H
+
+// 内容 ...
+
 #endif
 ```
+
+作用：避免重复定义导致编译报错。
+
+---
+
+##### （2）只写“声明”，不写“定义”
+
+头文件中通常放：
+
+* 函数声明
+* 结构体声明
+* 宏定义
+* typedef
+* extern 声明
+
+头文件中**不应该写：**
+
+* 函数的具体实现（除 static inline 特例）
+* 全局变量定义（应该使用 `extern`）
+
+---
+
+##### （3）必要的引用放在 `.h` 里还是 `.c` 里？
+
+| 类型                          | 是否应放在 `.h`               |
+| --------------------------- | ------------------------ |
+| `<stdio.h> <stdlib.h>` 等标准库 | **一般不放**（除非头文件声明用到了这些类型） |
+| `<stdint.h>` 等类型相关头         | 如果头文件用到这些类型，**必须放**      |
+| 自己写的头文件                     | 需要依赖时才 include           |
+
+规则很简单：
+**只 include 你这个头文件“真正需要”使用到的内容。**
+
+---
+
+##### （4）头文件建议的规范写法
+
+举个标准模板：
+
+```h
+#ifndef RELU_H
+#define RELU_H
+
+#endif // RELU_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdint.h>   // 头文件真的使用到了才 include
+
+// 宏定义
+#define ACTIVATION_RELU 1
+
+// 类型定义
+typedef struct {
+    float* data;
+    int size;
+} Tensor1D;
+
+// 函数声明
+void relu(const float* input, float* output, int size);
+
+#ifdef __cplusplus
+}
+#endif
+
+```
+
+这是工业级规范。
 
 ---
 

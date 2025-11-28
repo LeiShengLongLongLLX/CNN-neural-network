@@ -20,10 +20,14 @@ void maxpool_forward(const Tensor* input, Tensor* output,
     int H_out = output->H;     // 输出高度
     int W_out = output->W;     // 输出宽度
 
-    for (int n = 0; n < N; n++) {                     // 遍历批量
-        for (int c = 0; c < C; c++) {                 // 遍历通道
-            for (int oh = 0; oh < H_out; oh++) {      // 遍历输出高度
-                for (int ow = 0; ow < W_out; ow++) {  // 遍历输出宽度
+    for (int n = 0; n < N; n++)   // 遍历批量
+    {                     
+        for (int c = 0; c < C; c++)    // 遍历通道
+        {                 
+            for (int oh = 0; oh < H_out; oh++)  // 遍历输出高度
+             {      
+                for (int ow = 0; ow < W_out; ow++)  // 遍历输出宽度
+                {  
 
                     float max_val = -FLT_MAX;  // 初始化值为极小值
 

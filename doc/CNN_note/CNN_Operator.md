@@ -286,13 +286,17 @@ CNN 算子体系结构可以理解为：
 * dtype 决定吞吐和能耗
 * 参数大小决定片上存储与带宽压力
 
-掌握这些概念，有助于：
-
-✔ AI 芯片架构设计
-✔ CNN 推理优化
-✔ Tile 算法实现
-✔ Cache/Bandwidth 建模
-✔ LUT / MAC / Systolic Array 评估
+> 掌握这些概念，有助于：
+> 
+> ✔ AI 芯片架构设计
+> 
+> ✔ CNN 推理优化
+> 
+> ✔ Tile 算法实现
+> 
+> ✔ Cache/Bandwidth 建模
+> 
+> ✔ LUT / MAC / Systolic Array 评估
 
 ---
 

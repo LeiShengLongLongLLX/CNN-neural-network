@@ -6,7 +6,8 @@ void Conv2D(const Tensor* input, const Tensor* kernel, Tensor* output, int strid
 {
     int N      = input->N;        // 输入张量的batch size
     int C_in   = input->C;        // 输入张量的通道数
-    int H_in   = input->H;        // 输入张量的高度
+    int H_in   = input->H;        // 输入张量的高度 
+    
     int W_in   = input->W;        // 输入张量的宽度
 
     int C_out  = kernel->N;       // 输出张量的通道数

@@ -72,16 +72,29 @@
 
 ---
 
-## 二、Pytorch
+# 深度学习框架
+
+## 一、Pytorch
 
 ---
 
-## 三、Tensorflow
+## 二、Tensorflow
 
 ---
 
-## 四、CUDA
+## 三、Caffe
 
 ---
 
+## 四、MXNet
 
+---
+
+# 深度学习开发平台
+## 一、CUDA
+
+---
+
+## 二、cuDNN
+
+---

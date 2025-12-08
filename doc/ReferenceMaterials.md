@@ -51,6 +51,8 @@ https://github.com/cxdzyq1110/NPU_on_FPGA
 #### 2. github开源地址
 https://github.com/Infrasys-AI/AISystem
 
+---
+
 ### 4.2 UBC Video
 #### 1. A New Golden Age for Computer Architecture
 https://youtu.be/kFT54hO1X8M?si=uhFkwfb2MX_kMmfB

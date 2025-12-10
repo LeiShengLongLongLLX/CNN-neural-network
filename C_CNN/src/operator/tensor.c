@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "tensor.h"
+#include "../../include/tensor.h"
 
 // 张量初始化
 Tensor Tensor_init(int N, int C, int H, int W)

@@ -1,4 +1,4 @@
-#include "conv2d.h"
+#include "../../include/conv2d.h"
 
 // 卷积算子
 // output 的尺寸必须由你提前计算并创建好

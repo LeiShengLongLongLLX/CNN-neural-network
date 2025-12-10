@@ -1,4 +1,4 @@
-#include "relu.h"
+#include "../../include/relu.h"
 
 // 逐元素 ReLU 激活函数实现
 // input: 输入张量

@@ -1,5 +1,5 @@
 #include <float.h>
-#include "maxpool.h"
+#include "../../include/maxpool.h"
 
 // MaxPool函数（支持一般 kernel_size, stride）
 // output 张量的尺寸必须由你提前计算并创建好

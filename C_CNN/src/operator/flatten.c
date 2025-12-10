@@ -1,4 +1,4 @@
-#include "flatten.h"
+#include "../../include/flatten.h"
 
 // 展平函数
 // 将 [N, C, H, W] 展平成 [N, 1, 1, C*H*W]

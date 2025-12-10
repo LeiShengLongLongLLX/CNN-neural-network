@@ -59,3 +59,11 @@ https://youtu.be/kFT54hO1X8M?si=uhFkwfb2MX_kMmfB
 
 #### 2. The Golden Age of Compiler Design in an Era of HW/SW
 https://youtu.be/4HgShra-KnY?si=OJLr8qpObhi6pgn8
+
+
+## 五、蜂鸟E203与Nuclei Studio
+### 1. hybird SDK
+https://github.com/riscv-mcu/hbird-sdk
+
+### 2. Nuclei Studio IDE
+https://www.nucleisys.com/download.php

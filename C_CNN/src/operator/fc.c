@@ -1,4 +1,4 @@
-#include "fc.h"
+#include "../../include/fc.h"
 #include <stddef.h>
 
 // 计算全连接层，支持带偏置bias

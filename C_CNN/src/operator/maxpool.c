@@ -9,7 +9,7 @@
 // kernel_size: 池化核大小
 // stride: 池化步长
 
-void maxpool_forward(const Tensor* input, Tensor* output,
+void maxpool2D(const Tensor* input, Tensor* output,
                      int kernel_size, int stride)
 {
     int N = input->N;          // 批量大小

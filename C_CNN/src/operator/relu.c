@@ -4,7 +4,7 @@
 // input: 输入张量
 // output: 输出张量
 
-void relu_forward(const Tensor* input, Tensor* output)
+void relu(const Tensor* input, Tensor* output)
 {
     int total = input->N * input->C * input->H * input->W;  // 计算总元素数量
 

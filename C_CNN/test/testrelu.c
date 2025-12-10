@@ -22,7 +22,7 @@ int main()
 
     fill_input_data(&input);
 
-    ReLU(&input, &output);
+    relu(&input, &output);
 
     printTensor(input,  "Input");
     printTensor(output, "Output (ReLU)");

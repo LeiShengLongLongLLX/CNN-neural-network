@@ -67,3 +67,7 @@ https://github.com/riscv-mcu/hbird-sdk
 
 ### 2. Nuclei Studio IDE
 https://www.nucleisys.com/download.php
+
+https://www.bilibili.com/video/BV1iU4y1f7qK?spm_id_from=333.788.player.player_end_recommend_autoplay&vd_source=81e627cd2e6adac202192029618d378e&trackid=web_related_0.router-related-2206419-pwgnb.1765455938287.211
+
+https://www.bilibili.com/video/BV1ia411U76P/?spm_id_from=333.1387.homepage.video_card.click&vd_source=81e627cd2e6adac202192029618d378e

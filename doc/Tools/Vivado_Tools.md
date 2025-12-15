@@ -102,13 +102,10 @@ Vitis 是 **软件与系统级开发平台**，专为 Zynq / Versal 等嵌入式
 
 ---
 
-### 1.7 简单使用顺序（典型流程）
+# Vitis
 
-1. **Vivado**：设计硬件系统 → 生成 `.xsa`
-2. **Vitis HLS / Model Composer**：设计自定义加速器 → 生成 IP → 回到 Vivado 集成
-3. **Vivado**：重新实现系统 → 生成新的 `.xsa`
-4. **Vitis**：导入 `.xsa` → 编写 C 应用程序 → 部署运行
-5. **DocNav**：随时查阅官方文档说明。
 
----
 
+
+
+# Vitis HLS

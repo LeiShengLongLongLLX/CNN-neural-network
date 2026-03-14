@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+# MobileNetV1的定义代码
 class DepthwiseSeparableConv(nn.Module):
     """深度可分离卷积：先深度卷积，再逐点卷积"""
     def __init__(self, in_channels, out_channels, stride=1):

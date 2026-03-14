@@ -122,7 +122,7 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     criterion = nn.CrossEntropyLoss()
 
-    epochs = 5 #训练次数
+    epochs = 10 #训练次数
 
     for epoch in range(1, epochs + 1):
         train(model, device, train_loader, optimizer, criterion, epoch)

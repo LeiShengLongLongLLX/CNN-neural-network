@@ -40,7 +40,7 @@ int main()
     Tensor output = Tensor_init(feature.N, kernel.N, H_out, W_out);
 
     // 3. 调用卷积
-    Conv2D_int32(&feature, &kernel, &output, stride, padding);  // stride=1, padding=0
+    Conv2D_int32(&feature, &kernel, NULL, &output, stride, padding);  // stride=1, padding=0
 
     // 4. 打印结果
     printTensor(&feature, "Input");

@@ -2,8 +2,9 @@
 
 // 卷积算子
 // output 的尺寸必须由你提前计算并创建好
-// 没有饱和处理，结果可能会溢出
-void Conv2D_int16(const Tensor* input, const Tensor* kernel, Tensor* output, int stride, int padding) 
+// bias 为每个输出通道一个偏置，可为 NULL 表示无偏置
+void Conv2D_int16(const Tensor* input, const Tensor* kernel, const int16_t* bias,
+                  Tensor* output, int stride, int padding) 
 {
     int N      = input->N;        // 输入张量的batch size
     int C_in   = input->C;        // 输入张量的通道数
@@ -57,6 +58,12 @@ void Conv2D_int16(const Tensor* input, const Tensor* kernel, Tensor* output, int
                                 sum += v_in * v_k;
                             }
                         }
+                    }
+
+                    // 加上对应输出通道的 bias（如有），并做饱和
+                    if (bias != NULL)
+                    {
+                        sum += bias[co];
                     }
 
                     // 写入输出张量（带饱和防溢出）

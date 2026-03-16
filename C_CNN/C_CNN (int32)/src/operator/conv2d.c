@@ -2,8 +2,9 @@
 
 // 卷积算子
 // output 的尺寸必须由你提前计算并创建好
-// 没有饱和处理，结果可能会溢出
-void Conv2D_int32(const Tensor* input, const Tensor* kernel, Tensor* output, int stride, int padding) 
+// bias 为每个输出通道一个偏置，可为 NULL 表示无偏置
+void Conv2D_int32(const Tensor* input, const Tensor* kernel, const int32_t* bias,
+                  Tensor* output, int stride, int padding) 
 {
     int N      = input->N;        // 输入张量的batch size
     int C_in   = input->C;        // 输入张量的通道数
@@ -24,7 +25,7 @@ void Conv2D_int32(const Tensor* input, const Tensor* kernel, Tensor* output, int
             {
                 for (int ow = 0; ow < W_out; ow++)  // 遍历输出张量宽度
                 {
-                    int32_t sum = 0;
+                    int32_t sum = 0; // sum暂时考虑32位
 
                     // h_start / w_start 是卷积核对应当前输出像素时，在输入特征图上的窗口左上角坐标
                     int h_start = oh * stride - padding;    // 计算卷积核在输入张量上的起始位置（高）
@@ -59,7 +60,13 @@ void Conv2D_int32(const Tensor* input, const Tensor* kernel, Tensor* output, int
                         }
                     }
 
-                    // 写入输出张量（带饱和防溢出）
+                    // 加上对应输出通道的 bias（如有）
+                    if (bias != NULL)
+                    {
+                        sum += bias[co];
+                    }
+
+                    // 写入输出张量
                     output->data[
                         IDX4(n, co, oh, ow, C_out, H_out, W_out)
                     ] = sum; // 对于 32 位输入/权重，sum 也为 32 位，如果后续需要 64 位可再扩展

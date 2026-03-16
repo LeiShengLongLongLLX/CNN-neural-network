@@ -59,10 +59,10 @@ void Conv2D_int16(const Tensor* input, const Tensor* kernel, Tensor* output, int
                         }
                     }
 
-                    // 写入输出张量
+                    // 写入输出张量（带饱和防溢出）
                     output->data[
                         IDX4(n, co, oh, ow, C_out, H_out, W_out)
-                    ] = (int16_t)sum; // output[n][co][oh][ow]
+                    ] = saturate_int16_i32(sum); // output[n][co][oh][ow]
                 }
             }
         }

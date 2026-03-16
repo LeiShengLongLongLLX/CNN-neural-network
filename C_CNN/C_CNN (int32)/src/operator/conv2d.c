@@ -59,10 +59,10 @@ void Conv2D_int32(const Tensor* input, const Tensor* kernel, Tensor* output, int
                         }
                     }
 
-                    // 写入输出张量
+                    // 写入输出张量（带饱和防溢出）
                     output->data[
                         IDX4(n, co, oh, ow, C_out, H_out, W_out)
-                    ] = sum; // output[n][co][oh][ow]
+                    ] = sum; // 对于 32 位输入/权重，sum 也为 32 位，如果后续需要 64 位可再扩展
                 }
             }
         }

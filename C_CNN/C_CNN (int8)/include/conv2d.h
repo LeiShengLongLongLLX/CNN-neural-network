@@ -8,10 +8,11 @@
 // output 的尺寸必须由你提前计算并创建好
 // input: 输入张量
 // kernel: 卷积核张量
+// bias:   偏置数组，长度为 Cout（可为 NULL 表示无偏置）
 // output: 输出张量
 // stride: 卷积步长
 // padding: 填充大小
-void Conv2D_int8(const Tensor* input, const Tensor* kernel, Tensor* output,
-            int stride, int padding);
+void Conv2D_int8(const Tensor* input, const Tensor* kernel, const int8_t* bias,
+                 Tensor* output, int stride, int padding);
 
 #endif

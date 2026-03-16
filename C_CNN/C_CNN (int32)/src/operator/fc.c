@@ -31,7 +31,7 @@ void FullyConnected(const Tensor* input, const Tensor* weights, const int32_t* b
             if (bias != NULL)  // 加上偏置
                 sum += bias[o];
             
-            output->data[IDX4(n, 0, 0, o, 1, 1, output_features)] = sum; // 存储输出向量
+            output->data[IDX4(n, 0, 0, o, 1, 1, output_features)] = sum; // 这里仍然保持 32 位范围，如需进一步限制可使用 saturate_int32_i64 包装更高位累加结果
         }
     }
 }

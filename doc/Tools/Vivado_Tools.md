@@ -35,9 +35,10 @@ Vitis 是 **软件与系统级开发平台**，专为 Zynq / Versal 等嵌入式
 * 可生成并部署可执行程序到 ARM 处理器上（PS 端）；
 * 适合嵌入式 Linux 或裸机（Bare-metal）应用开发。
 
-📌 简而言之：
+简而言之：
 
-> Vivado 做硬件 → Vitis 做软件。
+> Vivado 做硬件 
+> Vitis 做软件
 
 ---
 

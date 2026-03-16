@@ -2,6 +2,7 @@
 #define TENSOR_H
 
 #include <stdint.h>
+#include <limits.h>
 // NCHW 索引展开
 // n: batch index
 // c: channel index
@@ -21,6 +22,21 @@ typedef struct {
     int H;          // 高度
     int W;          // 宽度
 } Tensor;
+
+// 饱和函数，防止溢出
+static inline int8_t saturate_int8_i32(int32_t x)
+{
+    if (x > INT8_MAX) return INT8_MAX;
+    if (x < INT8_MIN) return INT8_MIN;
+    return (int8_t)x;
+}
+
+static inline int8_t saturate_int8_i64(int64_t x)
+{
+    if (x > INT8_MAX) return INT8_MAX;
+    if (x < INT8_MIN) return INT8_MIN;
+    return (int8_t)x;
+}
 
 // tensor.c 中实现的函数声明
 Tensor Tensor_init(int N, int C, int H, int W);

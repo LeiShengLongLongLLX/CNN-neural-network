@@ -45,7 +45,7 @@ void gemm_int16(const Tensor* A,
 
             // printf("  sum = %lld (0x%llx)\n", sum, sum);
 
-            C->data[i * N + j] = (int32_t)sum;
+            C->data[i * N + j] = saturate_int16_i64(sum);
             // printf("  C[%d][%d] = %d (0x%x)\n\n", i, j, C[i * N + j], C[i * N + j]);
         }
     }

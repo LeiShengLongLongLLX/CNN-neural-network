@@ -18,7 +18,8 @@ void gemm_int8(const Tensor* A,
 
     for (int i = 0; i < M; i++) {       // 遍历batch
         for (int j = 0; j < N; j++) {   // 遍历output features
-            int64_t sum = 0;
+            
+            int64_t sum = 0; // 先用int64_t计算，防止溢出，再转换为int8_t
 
             for (int k = 0; k < K; k++) {
                 // 遍历input features
@@ -45,7 +46,7 @@ void gemm_int8(const Tensor* A,
 
             // printf("  sum = %lld (0x%llx)\n", sum, sum);
 
-            C->data[i * N + j] = (int32_t)sum;
+            C->data[i * N + j] = saturate_int8_i64(sum);
             // printf("  C[%d][%d] = %d (0x%x)\n\n", i, j, C[i * N + j], C[i * N + j]);
         }
     }

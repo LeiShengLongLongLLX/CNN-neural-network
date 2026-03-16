@@ -31,7 +31,7 @@ void FullyConnected(const Tensor* input, const Tensor* weights, const int8_t* bi
             if (bias != NULL)  // 加上偏置
                 sum += bias[o];
             
-            output->data[IDX4(n, 0, 0, o, 1, 1, output_features)] = sum; // 存储输出向量
+            output->data[IDX4(n, 0, 0, o, 1, 1, output_features)] = saturate_int8_i32(sum); // 存储输出向量
         }
     }
 }

@@ -45,7 +45,7 @@ void gemm_int32(const Tensor* A,
 
             // printf("  sum = %lld (0x%llx)\n", sum, sum);
 
-            C->data[i * N + j] = (int32_t)sum;
+            C->data[i * N + j] = (int32_t)sum; // 如果后续需要限制在 32 位范围内，上层存储已经是 int32_t
             // printf("  C[%d][%d] = %d (0x%x)\n\n", i, j, C[i * N + j], C[i * N + j]);
         }
     }

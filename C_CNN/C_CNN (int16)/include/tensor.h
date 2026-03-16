@@ -24,7 +24,7 @@ typedef struct {
     int W;          // 宽度
 } Tensor;
 
-// 饱和处理
+// 防溢出，饱和处理
 static inline int16_t saturate_int16_i32(int32_t x)
 {
     if (x > INT16_MAX) return INT16_MAX;

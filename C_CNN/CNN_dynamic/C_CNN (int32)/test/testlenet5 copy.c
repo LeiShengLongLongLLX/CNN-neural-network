@@ -11,7 +11,14 @@
 
 static void fill_input(Tensor* t)
 {
+    printf("input data allocated at %p\n", t->data);
+    printf("  shape: %dx%dx%dx%d\n", t->N, t->C, t->H, t->W);
+
     int size = t->N * t->C * t->H * t->W;
+
+    printf("Total elements: %d\n", size);
+    printf("Memory range: %p - %p\n", t->data, t->data + size - 1);
+
     for (int i = 0; i < size; ++i) {
         t->data[i] = (int32_t)i;
     }
@@ -19,7 +26,14 @@ static void fill_input(Tensor* t)
 
 static void fill_weights_ones(Tensor* t)
 {
+    printf("weights data allocated at %p\n", t->data);
+    printf("  shape: %dx%dx%dx%d\n", t->N, t->C, t->H, t->W);
+
     int size = t->N * t->C * t->H * t->W;
+    
+    printf("Total elements: %d\n", size);
+    printf("Memory range: %p - %p\n", t->data, t->data + size - 1);
+
     for (int i = 0; i < size; ++i) {
         t->data[i] = i;
     }
@@ -27,6 +41,11 @@ static void fill_weights_ones(Tensor* t)
 
 static void fill_bias_zero(int32_t* b, int len)
 {
+    printf("bias data allocated at %p\n", b);
+    printf("  shape: %d\n", len);
+    printf("Total elements: %d\n", len);
+    printf("Memory range: %p - %p\n", b, b + len - 1);
+
     for (int i = 0; i < len; ++i) {
         b[i] = 1;
     }
@@ -35,17 +54,10 @@ static void fill_bias_zero(int32_t* b, int len)
 int main(void)
 {
     printf("===== LeNet-5 int32 Test Start =====\n");
-    Tensor_arena_reset();
 
     // 输入：N=1, C=1, H=32, W=32
     Tensor input = Tensor_init(1, 1, 32, 32);
-    //fill_input(&input);
-    {
-        int size = input.N * input.C * input.H * input.W;
-        for (int i = 0; i < size; ++i) {
-            input.data[i] = 1;
-        }
-    }
+    fill_input(&input);
 
     // 权重张量（与 LeNet-5 结构对应）：
     // C1: 6×1×5×5, C3: 16×6×5×5, C5: 120×16×5×5

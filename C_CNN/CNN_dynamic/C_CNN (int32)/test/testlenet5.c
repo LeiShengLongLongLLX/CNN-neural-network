@@ -11,7 +11,14 @@
 
 static void fill_input(Tensor* t)
 {
+    // printf("input data allocated at %p\n", t->data);
+    // printf("  shape: %dx%dx%dx%d\n", t->N, t->C, t->H, t->W);
+
     int size = t->N * t->C * t->H * t->W;
+
+    // printf("Total elements: %d\n", size);
+    // printf("Memory range: %p - %p\n", t->data, t->data + size - 1);
+
     for (int i = 0; i < size; ++i) {
         t->data[i] = (int32_t)i;
     }
@@ -19,7 +26,14 @@ static void fill_input(Tensor* t)
 
 static void fill_weights_ones(Tensor* t)
 {
+    // printf("input data allocated at %p\n", t->data);
+    // printf("  shape: %dx%dx%dx%d\n", t->N, t->C, t->H, t->W);
+
     int size = t->N * t->C * t->H * t->W;
+    
+    // printf("Total elements: %d\n", size);
+    // printf("Memory range: %p - %p\n", t->data, t->data + size - 1);
+
     for (int i = 0; i < size; ++i) {
         t->data[i] = i;
     }

@@ -112,7 +112,7 @@ int main(void)
             &output);
 
         int pred = argmax10(&output);
-        printf("[%s] expected digit %d -> argmax class %d (logits: ", cases[ci].tag,
+        printf("[%s] expected digit %d \n argmax class %d \n (output_vector: ", cases[ci].tag,
                cases[ci].expected_digit, pred);
         for (int k = 0; k < 10; ++k) {
             printf("%d%s", (int)output.data[k], (k < 9) ? ", " : "");

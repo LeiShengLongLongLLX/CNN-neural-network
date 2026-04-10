@@ -1,4 +1,5 @@
 #include "../../include/conv2d.h"
+#include <stddef.h>
 
 // 卷积算子
 // output 的尺寸必须由你提前计算并创建好

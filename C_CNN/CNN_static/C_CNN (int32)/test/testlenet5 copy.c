@@ -26,7 +26,7 @@ static void fill_input(Tensor* t)
 
 static void fill_weights_ones(Tensor* t)
 {
-    printf("input data allocated at %p\n", t->data);
+    printf("weights data allocated at %p\n", t->data);
     printf("  shape: %dx%dx%dx%d\n", t->N, t->C, t->H, t->W);
 
     int size = t->N * t->C * t->H * t->W;
@@ -41,6 +41,11 @@ static void fill_weights_ones(Tensor* t)
 
 static void fill_bias_zero(int32_t* b, int len)
 {
+    printf("bias data allocated at %p\n", b);
+    printf("  shape: %d\n", len);
+    printf("Total elements: %d\n", len);
+    printf("Memory range: %p - %p\n", b, b + len - 1);
+
     for (int i = 0; i < len; ++i) {
         b[i] = 1;
     }

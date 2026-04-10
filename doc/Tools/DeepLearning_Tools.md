@@ -98,3 +98,12 @@
 ## 二、cuDNN
 
 ---
+
+# AI推理引擎
+
+## 一、大模型文件格式
+onnx trt om mnn
+
+## 二、不同的推理引擎
+MindIE onnxruntime TensorRT MNN
+

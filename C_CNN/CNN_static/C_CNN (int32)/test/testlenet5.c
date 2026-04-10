@@ -39,7 +39,9 @@ int main(void)
 
     // 输入：N=1, C=1, H=32, W=32
     Tensor input = Tensor_init(1, 1, 32, 32);
+
     //fill_input(&input);
+    
     {
         int size = input.N * input.C * input.H * input.W;
         for (int i = 0; i < size; ++i) {

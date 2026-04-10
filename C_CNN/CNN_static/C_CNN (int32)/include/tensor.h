@@ -34,9 +34,9 @@ static inline int32_t saturate_int32_i64(int64_t x)
 // tensor.c 中实现的函数声明
 // CNN_static: 使用静态 arena 分配，避免 malloc/free。
 // 容量单位：元素个数（不是字节）。可在编译时 -DTENSOR_ARENA_CAPACITY=... 覆盖。
-#ifndef TENSOR_ARENA_CAPACITY
+//#ifndef TENSOR_ARENA_CAPACITY
 #define TENSOR_ARENA_CAPACITY (200000)
-#endif
+//#endif
 
 void   Tensor_arena_reset(void);
 Tensor Tensor_init(int N, int C, int H, int W);
